@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "TVMuse Linker",
+  "version": "1.0",
+  "author": "Farzad Daei",
+  "icons": {
+    "128": "logo.png"
+  },
+  "browser_action": {
+    "default_icon": "logo.png",
+	"default_popup": "popup.html"
+  },
+  "content_scripts": [
+  {
+		"matches": [
+		  "http://www.tvmuse.com/tv-shows/*/season_*/episode_*/*"
+		],
+		"js": ["jquery-2.2.3.min.js", "content.js"]
+  }],
+  "permissions": [
+	  "http://www.tvmuse.com/tv-shows/*/season_*/episode_*/*"
+  ]
+}
