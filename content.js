@@ -1,4 +1,5 @@
-var regExp = /href=&quot;([^&|#]+)\&quot\;/g;
+var regResults = /href=&quot;([^&|#]+)\&quot\;/gi;
+var regHost = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im
 var validLinks = [];
 
 // http://www.tvmuse.com/tv-shows/*/season_*/episode_*/*
@@ -37,11 +38,12 @@ function sendAction(action, otherParams)
 	
 	xmlHttp.onreadystatechange = function() {
 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-			var urls = xmlHttp.responseText.match(regExp);
+			var urls = xmlHttp.responseText.match(regResults);
 			for (i = 0; i < urls.length; i++)
 			{
 				var url = urls[i].replace("href=&quot;", "").replace("&quot;", "");
-				$("#table_search").html($("#table_search").html() + "<li><a href=\"" + url + "\" class=\"list outer cfix\"> <span class=\"c1\"> <em class=\"i_search\">&nbsp;</em> </span> <span class=\"c2 o_hidden\"> <span class=\"block mb_05 nowrap\"><span class=\"bigger bold underline\">" + url + "</span> &nbsp;<span class=\"dark\">by <span class=\"bold\">TVMuse Linker</span></span></span>  </span>  </a>  </li>");
+                var host = url.match(regHost)[1];
+				$("#table_search").html($("#table_search").html() + "<li><a href=\"" + url + "\" class=\"list outer cfix\"> <span class=\"c1\"> <em class=\"i_search\">&nbsp;</em> </span> <span class=\"c2 o_hidden\"> <span class=\"block mb_05 nowrap\"><span class=\"bigger bold underline\">" + host + "</span> &nbsp;<span class=\"dark\">by <span class=\"bold\">TVMuse Linker</span></span></span>  </span>  </a>  </li>");
 				validLinks.push(url);
 			}
 		}
