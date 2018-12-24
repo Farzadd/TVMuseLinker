@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "TVMuse Linker",
-  "version": "1.1",
+  "name": "TV Links",
+  "version": "1.2",
   "author": "Farzad Daei",
   "icons": {
     "128": "logo.png"
@@ -15,9 +15,17 @@
 		"matches": [
 		  "http://www.tvmuse.com/tv-shows/*/season_*/episode_*/*"
 		],
-		"js": ["jquery-2.2.3.min.js", "content.js"]
+		"js": ["jquery-2.2.3.min.js", "scripts/tvmuse.js"]
+  },
+  {
+		"matches": [
+		  "https://trakt.tv/shows/*/seasons/*/episodes/*"
+		],
+		"js": ["jquery-2.2.3.min.js", "scripts/trakt.js"]
   }],
   "permissions": [
-	  "http://www.tvmuse.com/tv-shows/*/season_*/episode_*/*"
+	  "http://www.tvmuse.com/tv-shows/*/season_*/episode_*/*",
+	  "https://trakt.tv/shows/*/seasons/*/episodes/*",
+	  "https://flixify.com/shows/*/season-*/episode-*"
   ]
 }
