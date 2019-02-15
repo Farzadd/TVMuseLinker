@@ -6,8 +6,8 @@ var showName = $('.summary a')[0].text.trim().toLowerCase();
 showName = showName.replace(/&/g, "and").replace(/\(|\)|'|\.|\:/g, "").replace(/\s/g, '-');
 
 const pageUrl = window.location.href;
-const season = /seasons\/(\d)*/g.exec(pageUrl)[1];
-const episode = /episodes\/(\d)*/g.exec(pageUrl)[1];
+const season = /seasons\/(\d*)/g.exec(pageUrl)[1];
+const episode = /episodes\/(\d*)/g.exec(pageUrl)[1];
 
 var flexifyLink = 'https://flixify.com/shows/' + showName + '/season-' + season + '/episode-' + episode + '?pl=1';
 
